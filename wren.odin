@@ -22,7 +22,7 @@ WriteFn :: #type proc(vm: ^VM, text: cstring);
 ErrorType :: AnonymousEnum0;
 ErrorFn :: #type proc(vm: ^VM, type: ErrorType, module: cstring, line: _c.int, message: cstring);
 ForeignClassMethods :: AnonymousStruct0;
-BindForeignClassFn :: #type proc(vm: ^VM, module: cstring, className: cstring);
+BindForeignClassFn :: #type proc(vm: ^VM, module: cstring, className: cstring) -> ForeignClassMethods;
 Configuration :: AnonymousStruct1;
 InterpretResult :: AnonymousEnum1;
 Type :: AnonymousEnum2;
