@@ -98,25 +98,25 @@ foreign wren {
     Interpret :: proc(
         vm : ^VM,
         module : cstring,
-        source : cstring
+        source : cstring,
     ) -> InterpretResult ---;
 
     @(link_name="wrenMakeCallHandle")
     MakeCallHandle :: proc(
         vm : ^VM,
-        signature : cstring
+        signature : cstring,
     ) -> ^Handle ---;
 
     @(link_name="wrenCall")
     Call :: proc(
         vm : ^VM,
-        method : ^Handle
+        method : ^Handle,
     ) -> InterpretResult ---;
 
     @(link_name="wrenReleaseHandle")
     ReleaseHandle :: proc(
         vm : ^VM,
-        handle : ^Handle
+        handle : ^Handle,
     ) ---;
 
     @(link_name="wrenGetSlotCount")
@@ -125,57 +125,57 @@ foreign wren {
     @(link_name="wrenEnsureSlots")
     EnsureSlots :: proc(
         vm : ^VM,
-        numSlots : _c.int
+        numSlots : _c.int,
     ) ---;
 
     @(link_name="wrenGetSlotType")
     GetSlotType :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> Type ---;
 
     @(link_name="wrenGetSlotBool")
     GetSlotBool :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> bool ---;
 
     @(link_name="wrenGetSlotBytes")
     GetSlotBytes :: proc(
         vm : ^VM,
         slot : _c.int,
-        length : ^_c.int
+        length : ^_c.int,
     ) -> cstring ---;
 
     @(link_name="wrenGetSlotDouble")
     GetSlotDouble :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> _c.double ---;
 
     @(link_name="wrenGetSlotForeign")
     GetSlotForeign :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> rawptr ---;
 
     @(link_name="wrenGetSlotString")
     GetSlotString :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> cstring ---;
 
     @(link_name="wrenGetSlotHandle")
     GetSlotHandle :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> ^Handle ---;
 
     @(link_name="wrenSetSlotBool")
     SetSlotBool :: proc(
         vm : ^VM,
         slot : _c.int,
-        value : bool
+        value : bool,
     ) ---;
 
     @(link_name="wrenSetSlotBytes")
@@ -183,14 +183,14 @@ foreign wren {
         vm : ^VM,
         slot : _c.int,
         bytes : cstring,
-        length : _c.size_t
+        length : _c.size_t,
     ) ---;
 
     @(link_name="wrenSetSlotDouble")
     SetSlotDouble :: proc(
         vm : ^VM,
         slot : _c.int,
-        value : _c.double
+        value : _c.double,
     ) ---;
 
     @(link_name="wrenSetSlotNewForeign")
@@ -198,45 +198,45 @@ foreign wren {
         vm : ^VM,
         slot : _c.int,
         classSlot : _c.int,
-        size : _c.size_t
+        size : _c.size_t,
     ) -> rawptr ---;
 
     @(link_name="wrenSetSlotNewList")
     SetSlotNewList :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) ---;
 
     @(link_name="wrenSetSlotNewMap")
     SetSlotNewMap :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) ---;
 
     @(link_name="wrenSetSlotNull")
     SetSlotNull :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) ---;
 
     @(link_name="wrenSetSlotString")
     SetSlotString :: proc(
         vm : ^VM,
         slot : _c.int,
-        text : cstring
+        text : cstring,
     ) ---;
 
     @(link_name="wrenSetSlotHandle")
     SetSlotHandle :: proc(
         vm : ^VM,
         slot : _c.int,
-        handle : ^Handle
+        handle : ^Handle,
     ) ---;
 
     @(link_name="wrenGetListCount")
     GetListCount :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> _c.int ---;
 
     @(link_name="wrenGetListElement")
@@ -244,7 +244,7 @@ foreign wren {
         vm : ^VM,
         listSlot : _c.int,
         index : _c.int,
-        elementSlot : _c.int
+        elementSlot : _c.int,
     ) ---;
 
     @(link_name="wrenSetListElement")
@@ -252,7 +252,7 @@ foreign wren {
         vm : ^VM,
         listSlot : _c.int,
         index : _c.int,
-        elementSlot : _c.int
+        elementSlot : _c.int,
     ) ---;
 
     @(link_name="wrenInsertInList")
@@ -260,20 +260,20 @@ foreign wren {
         vm : ^VM,
         listSlot : _c.int,
         index : _c.int,
-        elementSlot : _c.int
+        elementSlot : _c.int,
     ) ---;
 
     @(link_name="wrenGetMapCount")
     GetMapCount :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) -> _c.int ---;
 
     @(link_name="wrenGetMapContainsKey")
     GetMapContainsKey :: proc(
         vm : ^VM,
         mapSlot : _c.int,
-        keySlot : _c.int
+        keySlot : _c.int,
     ) -> bool ---;
 
     @(link_name="wrenGetMapValue")
@@ -281,7 +281,7 @@ foreign wren {
         vm : ^VM,
         mapSlot : _c.int,
         keySlot : _c.int,
-        valueSlot : _c.int
+        valueSlot : _c.int,
     ) ---;
 
     @(link_name="wrenSetMapValue")
@@ -289,7 +289,7 @@ foreign wren {
         vm : ^VM,
         mapSlot : _c.int,
         keySlot : _c.int,
-        valueSlot : _c.int
+        valueSlot : _c.int,
     ) ---;
 
     @(link_name="wrenRemoveMapValue")
@@ -297,7 +297,7 @@ foreign wren {
         vm : ^VM,
         mapSlot : _c.int,
         keySlot : _c.int,
-        removedValueSlot : _c.int
+        removedValueSlot : _c.int,
     ) ---;
 
     @(link_name="wrenGetVariable")
@@ -305,26 +305,26 @@ foreign wren {
         vm : ^VM,
         module : cstring,
         name : cstring,
-        slot : _c.int
+        slot : _c.int,
     ) ---;
 
     @(link_name="wrenHasVariable")
     HasVariable :: proc(
         vm : ^VM,
         module : cstring,
-        name : cstring
+        name : cstring,
     ) -> bool ---;
 
     @(link_name="wrenHasModule")
     HasModule :: proc(
         vm : ^VM,
-        module : cstring
+        module : cstring,
     ) -> bool ---;
 
     @(link_name="wrenAbortFiber")
     AbortFiber :: proc(
         vm : ^VM,
-        slot : _c.int
+        slot : _c.int,
     ) ---;
 
     @(link_name="wrenGetUserData")
@@ -333,7 +333,7 @@ foreign wren {
     @(link_name="wrenSetUserData")
     SetUserData :: proc(
         vm : ^VM,
-        userData : rawptr
+        userData : rawptr,  
     ) ---;
 
 }
